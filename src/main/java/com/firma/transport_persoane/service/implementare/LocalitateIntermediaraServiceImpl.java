@@ -14,43 +14,44 @@ import java.util.List;
 @Service
 public class LocalitateIntermediaraServiceImpl implements LocalitateIntermediaraService {
 
-    private final LocalitateIntermediaraRepository localitateIntermediaraRepository;
-    private final LocalitateIntermediaraMapper localitateIntermediaraMapper;
+    private final LocalitateIntermediaraRepository repository;
+    private final LocalitateIntermediaraMapper mapper;
 
     @Autowired
-    public LocalitateIntermediaraServiceImpl(LocalitateIntermediaraRepository localitateIntermediaraRepository, LocalitateIntermediaraMapper localitateIntermediaraMapper) {
-        this.localitateIntermediaraRepository = localitateIntermediaraRepository;
-        this.localitateIntermediaraMapper = localitateIntermediaraMapper;
+    public LocalitateIntermediaraServiceImpl(LocalitateIntermediaraRepository repository,
+                                             LocalitateIntermediaraMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<LocalitateIntermediara> getAllLocalitatiIntermediare() {
-        return localitateIntermediaraRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public LocalitateIntermediara getLocalitateIntermediaraById(Integer id) {
-        return localitateIntermediaraRepository.findById(id)
+        return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Localitate Intermediara nu a fost gasita"));
     }
 
     @Transactional
     @Override
-    public LocalitateIntermediara adaugaLocalitateIntermediara(LocalitateIntermediaraDTO localitateIntermediaraDTO) {
-        LocalitateIntermediara localitateIntermediara = localitateIntermediaraMapper.toEntity(localitateIntermediaraDTO);
-        return localitateIntermediaraRepository.save(localitateIntermediara);
+    public LocalitateIntermediara adaugaLocalitateIntermediara(LocalitateIntermediaraDTO dto) {
+        LocalitateIntermediara localitate = mapper.toEntity(dto);
+        return repository.save(localitate);
     }
 
     @Transactional
     @Override
-    public LocalitateIntermediara actualizareLocalitateIntermediara(Integer id, LocalitateIntermediaraDTO localitateIntermediaraDTO) {
-        LocalitateIntermediara localitateIntermediaraActuala = getLocalitateIntermediaraById(id);
-        localitateIntermediaraMapper.updateEntityFromDTO(localitateIntermediaraDTO, localitateIntermediaraActuala);
-        return localitateIntermediaraRepository.save(localitateIntermediaraActuala);
+    public LocalitateIntermediara actualizareLocalitateIntermediara(Integer id, LocalitateIntermediaraDTO dto) {
+        LocalitateIntermediara localitateActuala = getLocalitateIntermediaraById(id);
+        mapper.updateEntityFromDTO(dto, localitateActuala);
+        return repository.save(localitateActuala);
     }
 
     @Override
     public void stergeLocalitateIntermediara(Integer id) {
-        localitateIntermediaraRepository.delete(getLocalitateIntermediaraById(id));
+        repository.delete(getLocalitateIntermediaraById(id));
     }
 }

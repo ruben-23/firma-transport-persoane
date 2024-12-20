@@ -19,6 +19,7 @@ public class LocalitateIntermediaraMapper {
         dto.setIdRuta(localitateIntermediara.getRuta().getIdRuta());
         dto.setIdLocalitate(localitateIntermediara.getLocalitate().getIdLocalitate());
         dto.setOrdine(localitateIntermediara.getOrdine());
+
         return dto;
     }
 
@@ -40,7 +41,8 @@ public class LocalitateIntermediaraMapper {
         return localitateIntermediara;
     }
 
-    public void updateEntityFromDTO(LocalitateIntermediaraDTO localitateIntermediaraDTO, LocalitateIntermediara localitateIntermediara) {
+    public void updateEntityFromDTO(LocalitateIntermediaraDTO localitateIntermediaraDTO,
+                                    LocalitateIntermediara localitateIntermediara) {
         if (localitateIntermediaraDTO != null && localitateIntermediara != null) {
             localitateIntermediara.setOrdine(localitateIntermediaraDTO.getOrdine());
         }

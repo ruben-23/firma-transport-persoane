@@ -8,7 +8,7 @@ import java.util.List;
 public interface LocalitateIntermediaraService {
     List<LocalitateIntermediara> getAllLocalitatiIntermediare();
     LocalitateIntermediara getLocalitateIntermediaraById(Integer id);
-    LocalitateIntermediara adaugaLocalitateIntermediara(LocalitateIntermediaraDTO localitateIntermediaraDTO);
-    LocalitateIntermediara actualizareLocalitateIntermediara(Integer id, LocalitateIntermediaraDTO localitateIntermediaraDTO);
+    LocalitateIntermediara adaugaLocalitateIntermediara(LocalitateIntermediaraDTO dto);
+    LocalitateIntermediara actualizareLocalitateIntermediara(Integer id, LocalitateIntermediaraDTO dto);
     void stergeLocalitateIntermediara(Integer id);
 }
