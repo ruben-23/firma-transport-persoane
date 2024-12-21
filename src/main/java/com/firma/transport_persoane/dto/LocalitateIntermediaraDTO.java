@@ -1,16 +1,18 @@
 package com.firma.transport_persoane.dto;
 
+import com.firma.transport_persoane.entity.LocalitateIntermediaraId;
+
 public class LocalitateIntermediaraDTO {
-    private Integer idLocalitateIntermediara;
+    private LocalitateIntermediaraId idLocalitateIntermediara;
     private Integer idRuta;
     private Integer idLocalitate;
     private Integer ordine;
 
-    public Integer getIdLocalitateIntermediara() {
+    public LocalitateIntermediaraId getIdLocalitateIntermediara() {
         return idLocalitateIntermediara;
     }
 
-    public void setIdLocalitateIntermediara(Integer idLocalitateIntermediara) {
+    public void setIdLocalitateIntermediara(LocalitateIntermediaraId idLocalitateIntermediara) {
         this.idLocalitateIntermediara = idLocalitateIntermediara;
     }
 
@@ -37,4 +39,7 @@ public class LocalitateIntermediaraDTO {
     public void setOrdine(Integer ordine) {
         this.ordine = ordine;
     }
+
+
+
 }

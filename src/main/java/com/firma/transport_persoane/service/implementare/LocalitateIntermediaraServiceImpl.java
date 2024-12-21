@@ -2,6 +2,7 @@ package com.firma.transport_persoane.service.implementare;
 
 import com.firma.transport_persoane.dto.LocalitateIntermediaraDTO;
 import com.firma.transport_persoane.entity.LocalitateIntermediara;
+import com.firma.transport_persoane.entity.LocalitateIntermediaraId;
 import com.firma.transport_persoane.mapper.LocalitateIntermediaraMapper;
 import com.firma.transport_persoane.repository.LocalitateIntermediaraRepository;
 import com.firma.transport_persoane.service.LocalitateIntermediaraService;
@@ -30,7 +31,7 @@ public class LocalitateIntermediaraServiceImpl implements LocalitateIntermediara
     }
 
     @Override
-    public LocalitateIntermediara getLocalitateIntermediaraById(Integer id) {
+    public LocalitateIntermediara getLocalitateIntermediaraById(LocalitateIntermediaraId id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Localitate Intermediara nu a fost gasita"));
     }
@@ -44,14 +45,14 @@ public class LocalitateIntermediaraServiceImpl implements LocalitateIntermediara
 
     @Transactional
     @Override
-    public LocalitateIntermediara actualizareLocalitateIntermediara(Integer id, LocalitateIntermediaraDTO dto) {
-        LocalitateIntermediara localitateActuala = getLocalitateIntermediaraById(id);
+    public LocalitateIntermediara actualizareLocalitateIntermediara(LocalitateIntermediaraDTO dto) {
+        LocalitateIntermediara localitateActuala = getLocalitateIntermediaraById(dto.getIdLocalitateIntermediara());
         mapper.updateEntityFromDTO(dto, localitateActuala);
         return repository.save(localitateActuala);
     }
 
     @Override
-    public void stergeLocalitateIntermediara(Integer id) {
+    public void stergeLocalitateIntermediara(LocalitateIntermediaraId id) {
         repository.delete(getLocalitateIntermediaraById(id));
     }
 }

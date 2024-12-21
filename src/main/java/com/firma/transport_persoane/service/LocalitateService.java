@@ -2,8 +2,6 @@ package com.firma.transport_persoane.service;
 
 import com.firma.transport_persoane.dto.LocalitateDTO;
 import com.firma.transport_persoane.entity.Localitate;
-import com.firma.transport_persoane.entity.LocalitateIntermediara;
-import com.firma.transport_persoane.entity.Pret;
 
 import java.util.List;
 

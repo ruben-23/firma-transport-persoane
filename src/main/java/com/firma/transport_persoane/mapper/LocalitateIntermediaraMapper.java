@@ -2,6 +2,7 @@ package com.firma.transport_persoane.mapper;
 
 import com.firma.transport_persoane.dto.LocalitateIntermediaraDTO;
 import com.firma.transport_persoane.entity.LocalitateIntermediara;
+import com.firma.transport_persoane.entity.LocalitateIntermediaraId;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -31,20 +32,23 @@ public class LocalitateIntermediaraMapper {
         return localitateIntermediaraDTOs;
     }
 
-    public LocalitateIntermediara toEntity(LocalitateIntermediaraDTO localitateIntermediaraDTO) {
-        if (localitateIntermediaraDTO == null) {
+    public LocalitateIntermediara toEntity(LocalitateIntermediaraDTO dto) {
+        if (dto == null) {
             return null;
         }
+
+        LocalitateIntermediaraId id = new LocalitateIntermediaraId(dto.getIdLocalitate(), dto.getIdRuta());
+
         LocalitateIntermediara localitateIntermediara = new LocalitateIntermediara();
-        localitateIntermediara.setIdLocalitateIntermediara(localitateIntermediaraDTO.getIdLocalitateIntermediara());
-        localitateIntermediara.setOrdine(localitateIntermediaraDTO.getOrdine());
+        localitateIntermediara.setIdLocalitateIntermediara(id);
+        localitateIntermediara.setOrdine(dto.getOrdine());
         return localitateIntermediara;
     }
 
-    public void updateEntityFromDTO(LocalitateIntermediaraDTO localitateIntermediaraDTO,
+    public void updateEntityFromDTO(LocalitateIntermediaraDTO dto,
                                     LocalitateIntermediara localitateIntermediara) {
-        if (localitateIntermediaraDTO != null && localitateIntermediara != null) {
-            localitateIntermediara.setOrdine(localitateIntermediaraDTO.getOrdine());
+        if (dto != null && localitateIntermediara != null) {
+            localitateIntermediara.setOrdine(dto.getOrdine());
         }
     }
 }

@@ -6,26 +6,27 @@ import jakarta.persistence.*;
 @Table(name = "localitati_intermediare")
 public class LocalitateIntermediara {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer idLocalitateIntermediara;
+    @EmbeddedId
+    private LocalitateIntermediaraId idLocalitateIntermediara;
 
     @ManyToOne
+    @MapsId("idRuta")
     @JoinColumn(name="id_ruta")
     private Ruta ruta;
 
     @ManyToOne
+    @MapsId("idLocalitate")
     @JoinColumn(name="id_localitate")
     private Localitate localitate;
 
     @Column
     private Integer ordine;
 
-    public Integer getIdLocalitateIntermediara() {
+    public LocalitateIntermediaraId getIdLocalitateIntermediara() {
         return idLocalitateIntermediara;
     }
 
-    public void setIdLocalitateIntermediara(Integer idLocalitateIntermediara) {
+    public void setIdLocalitateIntermediara(LocalitateIntermediaraId idLocalitateIntermediara) {
         this.idLocalitateIntermediara = idLocalitateIntermediara;
     }
 

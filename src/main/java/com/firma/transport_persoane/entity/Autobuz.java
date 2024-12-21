@@ -24,7 +24,7 @@ public class Autobuz {
     private Ruta ruta;
 
     @ManyToOne
-    @JoinColumn(name="firma")
+    @JoinColumn(name="id_firma")
     private Firma firma;
 
     public Integer getIdAutobuz() {

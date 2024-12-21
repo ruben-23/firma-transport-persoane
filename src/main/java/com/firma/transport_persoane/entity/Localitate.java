@@ -15,11 +15,13 @@ public class Localitate {
     @Column(nullable=false)
     private String nume;
 
+    // rute care au ca punct de plecare localitatea
     @OneToMany(mappedBy = "localitateInceput")
-    private List<Localitate> localitatiInceput;
+    private List<Ruta> ruteLocalitatiInceput;
 
+    // rute care au ca destinatie localitatea
     @OneToMany(mappedBy = "localitateDestinatie")
-    private List<Localitate> localitatiDestinatie;
+    private List<Ruta> ruteLocalitatiDestinatie;
 
     @OneToMany(mappedBy = "localitate")
     private List<LocalitateIntermediara> localitatiIntermediare;
@@ -43,20 +45,20 @@ public class Localitate {
         this.nume = nume;
     }
 
-    public List<Localitate> getLocalitatiInceput() {
-        return localitatiInceput;
+    public List<Ruta> getRuteLocalitatiInceput() {
+        return ruteLocalitatiInceput;
     }
 
-    public void setLocalitatiInceput(List<Localitate> localitatiInceput) {
-        this.localitatiInceput = localitatiInceput;
+    public void setRuteLocalitatiInceput(List<Ruta> ruteLocalitatiInceput) {
+        this.ruteLocalitatiInceput = ruteLocalitatiInceput;
     }
 
-    public List<Localitate> getLocalitatiDestinatie() {
-        return localitatiDestinatie;
+    public List<Ruta> getRuteLocalitatiDestinatie() {
+        return ruteLocalitatiDestinatie;
     }
 
-    public void setLocalitatiDestinatie(List<Localitate> localitatiDestinatie) {
-        this.localitatiDestinatie = localitatiDestinatie;
+    public void setLocalitatiDestinatie(List<Ruta> ruteLocalitatiDestinatie) {
+        this.ruteLocalitatiDestinatie = ruteLocalitatiDestinatie;
     }
 
     public List<LocalitateIntermediara> getLocalitatiIntermediare() {

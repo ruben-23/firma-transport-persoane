@@ -2,6 +2,7 @@ package com.firma.transport_persoane.controller;
 
 import com.firma.transport_persoane.dto.LocalitateIntermediaraDTO;
 import com.firma.transport_persoane.entity.LocalitateIntermediara;
+import com.firma.transport_persoane.entity.LocalitateIntermediaraId;
 import com.firma.transport_persoane.mapper.LocalitateIntermediaraMapper;
 import com.firma.transport_persoane.service.LocalitateIntermediaraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,12 @@ public class LocalitateIntermediaraController {
         return ResponseEntity.ok(mapper.toDTOList(localitati));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<LocalitateIntermediaraDTO> getLocalitateIntermediaraById(@PathVariable Integer id) {
-        LocalitateIntermediara localitate = service.getLocalitateIntermediaraById(id);
+    @GetMapping("/{idLocalitate}/{idRuta}")
+    public ResponseEntity<LocalitateIntermediaraDTO> getLocalitateIntermediaraById(@PathVariable Integer idLocalitate,
+                                                                                   @PathVariable Integer idRuta) {
+        LocalitateIntermediara localitate =
+                service.getLocalitateIntermediaraById(new LocalitateIntermediaraId(idLocalitate, idRuta));
+
         return ResponseEntity.ok(mapper.toDTO(localitate));
     }
 
@@ -42,17 +46,18 @@ public class LocalitateIntermediaraController {
         return ResponseEntity.ok(mapper.toDTO(localitate));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<LocalitateIntermediaraDTO> actualizareLocalitateIntermediara(@PathVariable Integer id,
+    @PutMapping("/{idLocalitate}/{idRuta}")
+    public ResponseEntity<LocalitateIntermediaraDTO> actualizareLocalitateIntermediara(@PathVariable Integer idLocalitate, @PathVariable Integer idRuta,
                                                                                        @RequestBody LocalitateIntermediaraDTO dto) {
-        dto.setIdLocalitateIntermediara(id);
-        LocalitateIntermediara localitate = service.actualizareLocalitateIntermediara(id, dto);
+        dto.setIdLocalitateIntermediara(new LocalitateIntermediaraId(idLocalitate, idRuta));
+        LocalitateIntermediara localitate = service.actualizareLocalitateIntermediara(dto);
         return ResponseEntity.ok(mapper.toDTO(localitate));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> stergeLocalitateIntermediara(@PathVariable Integer id) {
-        service.stergeLocalitateIntermediara(id);
+    @DeleteMapping("/{idLocalitate}/{idRuta}")
+    public ResponseEntity<Void> stergeLocalitateIntermediara(@PathVariable Integer idLocalitate,
+                                                             @PathVariable Integer idRuta) {
+        service.stergeLocalitateIntermediara(new LocalitateIntermediaraId(idLocalitate, idRuta));
         return ResponseEntity.noContent().build();
     }
 }
