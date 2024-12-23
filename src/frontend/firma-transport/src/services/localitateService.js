@@ -20,7 +20,7 @@ const localitateService = {
 
         try{
             const raspuns = await axios.get(`${BASE_URL}/${id}`);
-            return raspins.data;
+            return raspuns.data;
         } catch (error) {
             console.error(`Eroare la returnarea localitatii cu id ${id}:`, error);
             throw error;

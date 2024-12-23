@@ -73,23 +73,11 @@ const OrarRute = () => {
 
     setOrareRuteFiltrate(orareRuteFiltrate);
 
-    setPunctDePlecare('');
-    setZiua('');
-
   };
 
   const formatareOra = (ora) => {
     return ora ? ora.slice(0, 5) : ora;
   };
-
-
-  if (incarcare) {
-    return <div>Incarcare...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
 
   return (
       <Container className="mt-5">
@@ -100,6 +88,7 @@ const OrarRute = () => {
             <Col md={6}>
               <Form.Group controlId="punctDePlecare">
                 <Form.Label>Alegeti localitatea:</Form.Label>
+
                 <Dropdown>
                   <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
                     {punctDePlecare || "Selectati localitatea"}
@@ -151,6 +140,16 @@ const OrarRute = () => {
           </Button>
         </Form>
 
+        {incarcare && <div>Incarcare...</div>}
+        {error && <div style={{
+                color: "red",
+                width: '200px',
+                height: '100px',
+                backgroundColor: 'white',
+                textAlign: 'center',
+                lineHeight: '100px', }}
+        >Error: {error.message}</div>}
+
         {/* Tabel cu orarul rutelor filtrate dupa localitatea de plecare si ziua saptamanii */}
         <h2 className="mt-5">Lista Rute</h2>
         <Table striped bordered hover className="mt-3">
@@ -160,22 +159,24 @@ const OrarRute = () => {
             <th>Ruta</th>
             <th>Plecare</th>
             <th>Ora</th>
+            <th>Pret</th>
           </tr>
           </thead>
           <tbody>
 
           { (orareRuteFiltrate.length > 0) ?
               ( orareRuteFiltrate.map( (orar, index) => (
-                  <tr key={index}>
-                    <td>{orar.zi}</td>
-                    <td>{`${orar.rutaPlecare} - ${orar.rutaDestinatie}`}</td>
-                    <td>{orar.plecare}</td>
-                    <td>{formatareOra(orar.ora)}</td>
-                  </tr>
-              ))
-          ) : (
+                      <tr key={index}>
+                        <td>{orar.zi}</td>
+                        <td>{`${orar.rutaPlecare} - ${orar.rutaDestinatie}`}</td>
+                        <td>{orar.plecare}</td>
+                        <td>{formatareOra(orar.ora)}</td>
+                        <td>{`${orar.pret} lei`}</td>
+                      </tr>
+                  ))
+              ) : (
               <tr>
-                <td colSpan="4" className="text-center">
+                <td colSpan="5" className="text-center">
                   Nu exista rute disponibile.
                 </td>
               </tr>
