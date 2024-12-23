@@ -1,11 +1,11 @@
 package com.firma.transport_persoane.dto;
 
-import java.time.LocalDateTime;
-
 public class FeedbackDTO {
     private Integer idFeedback;
     private String tip;
-    private LocalDateTime timpTrimitere;
+
+    // long-pentru a putea primi formatul in milisecunde din javaScript
+    private Long timpTrimitere;
     private String mesaj;
     private Integer idFirma;
 
@@ -25,11 +25,11 @@ public class FeedbackDTO {
         this.tip = tip;
     }
 
-    public LocalDateTime getTimpTrimitere() {
+    public Long getTimpTrimitere() {
         return timpTrimitere;
     }
 
-    public void setTimpTrimitere(LocalDateTime timpTrimitere) {
+    public void setTimpTrimitere(Long timpTrimitere) {
         this.timpTrimitere = timpTrimitere;
     }
 

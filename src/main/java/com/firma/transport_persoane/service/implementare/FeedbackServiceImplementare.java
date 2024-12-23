@@ -2,9 +2,11 @@ package com.firma.transport_persoane.service .implementare;
 
 import com.firma.transport_persoane.dto.FeedbackDTO;
 import com.firma.transport_persoane.entity.Feedback;
+import com.firma.transport_persoane.entity.Firma;
 import com.firma.transport_persoane.mapper.FeedbackMapper;
 import com.firma.transport_persoane.repository.FeedbackRepository;
 import com.firma.transport_persoane.service.FeedbackService;
+import com.firma.transport_persoane.service.FirmaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +18,13 @@ public class FeedbackServiceImplementare implements FeedbackService {
 
     private final FeedbackRepository feedbackRepository;
     private final FeedbackMapper feedbackMapper;
+    private final FirmaService firmaService;
 
     @Autowired
-    public FeedbackServiceImplementare(FeedbackRepository feedbackRepository, FeedbackMapper feedbackMapper) {
+    public FeedbackServiceImplementare(FeedbackRepository feedbackRepository, FeedbackMapper feedbackMapper, FirmaService firmaService) {
         this.feedbackRepository = feedbackRepository;
         this.feedbackMapper = feedbackMapper;
+        this.firmaService = firmaService;
     }
 
     @Override
@@ -37,7 +41,8 @@ public class FeedbackServiceImplementare implements FeedbackService {
     @Transactional
     @Override
     public Feedback adaugaFeedback(FeedbackDTO feedbackDTO) {
-        Feedback feedback = feedbackMapper.toEntity(feedbackDTO);
+        Firma firma = firmaService.getFirmaById(feedbackDTO.getIdFirma());
+        Feedback feedback = feedbackMapper.toEntity(feedbackDTO, firma);
         return feedbackRepository.save(feedback);
     }
 

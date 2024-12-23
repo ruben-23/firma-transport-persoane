@@ -37,6 +37,7 @@ public class FeedbackController {
 
     @PostMapping
     public ResponseEntity<FeedbackDTO> adaugaFeedback(@RequestBody FeedbackDTO feedbackDTO) {
+        feedbackDTO.setIdFirma(1);
         Feedback feedback = feedbackService.adaugaFeedback(feedbackDTO);
         return ResponseEntity.ok(feedbackMapper.toDTO(feedback));
     }
