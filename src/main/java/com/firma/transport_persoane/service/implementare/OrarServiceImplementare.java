@@ -1,6 +1,7 @@
 package com.firma.transport_persoane.service.implementare;
 
 import com.firma.transport_persoane.dto.OrarDTO;
+import com.firma.transport_persoane.dto.OrarRutaDTO;
 import com.firma.transport_persoane.entity.Orar;
 import com.firma.transport_persoane.mapper.OrarMapper;
 import com.firma.transport_persoane.repository.OrarRepository;
@@ -52,5 +53,10 @@ public class OrarServiceImplementare implements OrarService {
     @Override
     public void stergeOrar(Integer id) {
         orarRepository.delete(getOrarById(id));
+    }
+
+    @Override
+    public List<OrarRutaDTO> getOrareRute() {
+        return orarRepository.findOrareRute();
     }
 }

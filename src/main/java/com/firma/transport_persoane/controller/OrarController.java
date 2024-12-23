@@ -1,6 +1,7 @@
 package com.firma.transport_persoane.controller;
 
 import com.firma.transport_persoane.dto.OrarDTO;
+import com.firma.transport_persoane.dto.OrarRutaDTO;
 import com.firma.transport_persoane.entity.Orar;
 import com.firma.transport_persoane.mapper.OrarMapper;
 import com.firma.transport_persoane.service.OrarService;
@@ -33,6 +34,11 @@ public class OrarController {
     public ResponseEntity<OrarDTO> getOrarById(@PathVariable Integer id) {
         Orar orar = orarService.getOrarById(id);
         return ResponseEntity.ok(orarMapper.toDTO(orar));
+    }
+
+    @GetMapping("/rute")
+    public ResponseEntity<List<OrarRutaDTO>> getOrareRute() {
+        return ResponseEntity.ok(orarService.getOrareRute());
     }
 
     @PostMapping

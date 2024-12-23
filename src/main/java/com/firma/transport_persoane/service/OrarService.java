@@ -1,6 +1,7 @@
 package com.firma.transport_persoane.service;
 
 import com.firma.transport_persoane.dto.OrarDTO;
+import com.firma.transport_persoane.dto.OrarRutaDTO;
 import com.firma.transport_persoane.entity.Orar;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface OrarService {
     Orar adaugaOrar(OrarDTO orarDTO);
     Orar actualizareOrar(Integer id, OrarDTO orarDTO);
     void stergeOrar(Integer id);
+
+    List<OrarRutaDTO> getOrareRute();
 }
