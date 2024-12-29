@@ -1,0 +1,30 @@
+
+.card {
+    background-color: #F7F7F7;
+    border: 1px solid #004085;
+}
+
+.card-title {
+    color: #004085;
+    text-align: center;
+}
+
+.card-text {
+    color: #333;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.buton-detalii {
+    background-color: #004085;
+    border-color: #004085;
+}
+
+.buton-detalii:hover {
+    background-color: #003366;
+    border-color: #003366;
+}
