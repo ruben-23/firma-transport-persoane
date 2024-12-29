@@ -6,6 +6,8 @@ import CustomToggle from "./custom/CustomToggle.jsx";
 import CustomMenu from "./custom/CustomMenu.jsx";
 import localitateService from "../services/localitateService.js";
 import orarService from "../services/orarService.js";
+import '../Styles/OrarRute.css';
+
 
 const OrarRute = () => {
   const [incarcare, setIncarcare] = useState(false);
@@ -87,11 +89,11 @@ const OrarRute = () => {
           <Row className="mb-3">
             <Col md={6}>
               <Form.Group controlId="punctDePlecare">
-                <Form.Label>Alegeti localitatea:</Form.Label>
+                <Form.Label>Alegeți localitatea:</Form.Label>
 
                 <Dropdown>
                   <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-                    {punctDePlecare || "Selectati localitatea"}
+                    {punctDePlecare || "Selectați localitatea"}
                   </Dropdown.Toggle>
                   <Dropdown.Menu as={CustomMenu}>
                     {localitati.map((localitate, index) => (
@@ -108,7 +110,7 @@ const OrarRute = () => {
             </Col>
             <Col md={6}>
               <Form.Group controlId="ziua">
-                <Form.Label>Alegeti ziua:</Form.Label>
+                <Form.Label>Alegeți ziua:</Form.Label>
                 <Form.Select
                     value={ziua}
                     onChange={(e) => setZiua(e.target.value)}
@@ -123,7 +125,7 @@ const OrarRute = () => {
                       backgroundColor: "#fff",
                     }}
                 >
-                  <option value="">Selectati ziua</option>
+                  <option value="">Selectați ziua</option>
                   <option value="Luni">Luni</option>
                   <option value="Marti">Marți</option>
                   <option value="Miercuri">Miercuri</option>
@@ -135,12 +137,12 @@ const OrarRute = () => {
               </Form.Group>
             </Col>
           </Row>
-          <Button variant="primary" type="submit">
+          <Button variant="success" type="submit">
             Vezi orare
           </Button>
         </Form>
 
-        {incarcare && <div>Incarcare...</div>}
+        {incarcare && <div>încărcare...</div>}
         {error && <div style={{
                 color: "red",
                 width: '200px',
@@ -151,33 +153,33 @@ const OrarRute = () => {
         >Error: {error.message}</div>}
 
         {/* Tabel cu orarul rutelor filtrate dupa localitatea de plecare si ziua saptamanii */}
-        <h2 className="mt-5">Lista Rute</h2>
-        <Table striped bordered hover className="mt-3">
+        <h2 className="mt-5">Listă Rute</h2>
+        <Table striped bordered hover className="mt-3 custom-table">
           <thead>
-          <tr>
-            <th>Ziua</th>
-            <th>Ruta</th>
-            <th>Plecare</th>
-            <th>Ora</th>
-            <th>Pret</th>
+          <tr className="ct-tr">
+            <th className="ct-th">Ziua</th>
+            <th className="ct-th">Ruta</th>
+            <th className="ct-th">Plecare</th>
+            <th className="ct-th">Ora</th>
+            <th className="ct-th">Preț</th>
           </tr>
           </thead>
-          <tbody>
 
+          <tbody>
           { (orareRuteFiltrate.length > 0) ?
               ( orareRuteFiltrate.map( (orar, index) => (
-                      <tr key={index}>
-                        <td>{orar.zi}</td>
-                        <td>{`${orar.rutaPlecare} - ${orar.rutaDestinatie}`}</td>
-                        <td>{orar.plecare}</td>
-                        <td>{formatareOra(orar.ora)}</td>
-                        <td>{`${orar.pret} lei`}</td>
+                      <tr key={index} className="ct-tr">
+                        <td className="ct-td">{orar.zi}</td>
+                        <td className="ct-td">{`${orar.rutaPlecare} - ${orar.rutaDestinatie}`}</td>
+                        <td className="ct-td">{orar.plecare}</td>
+                        <td className="ct-td">{formatareOra(orar.ora)}</td>
+                        <td className="ct-td">{`${orar.pret} lei`}</td>
                       </tr>
                   ))
               ) : (
-              <tr>
+              <tr className="ct-tr">
                 <td colSpan="5" className="text-center">
-                  Nu exista rute disponibile.
+                  Nu există rute disponibile.
                 </td>
               </tr>
           )}
