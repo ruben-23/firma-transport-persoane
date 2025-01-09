@@ -1,0 +1,138 @@
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    width: 700px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.modal-header h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.modal-header .total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.modul-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modul-dropdown label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.modul-dropdown select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.materii-dropdown {
+    margin-left: 1rem;
+}
+
+.scrollable-table-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+.modal-footer button {
+    margin-left: 10px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    border: 2px solid #dfdbdb;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.close-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+    background-color: #FF1A1A;
+    font-size: 15px;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-button:hover {
+    background-color: #d31616;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    .modul-dropdown select {
+        font-size: 0.9rem;
+    }
+}

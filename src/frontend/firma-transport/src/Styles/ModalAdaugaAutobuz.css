@@ -1,0 +1,40 @@
+.modal-adauga-autobuz .mda-body {
+    padding: 10px 20px 0 20px;
+}
+
+.modal-adauga-autobuz .mda-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    background-color: #F7F7F7;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.modal-adauga-autobuz .mda-form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.modal-adauga-autobuz .btn-success {
+    margin-top: 10px;
+}
+
+.modal-adauga-autobuz .mda-ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.modal-adauga-autobuz .mda-li {
+    background: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.modal-adauga-autobuz .mda-ora-zi {
+    display: flex;
+    gap: 5px;
+}
