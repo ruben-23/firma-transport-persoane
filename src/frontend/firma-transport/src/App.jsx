@@ -7,6 +7,7 @@ import Feedback from './components/Feedback.jsx';
 import {useState} from "react";
 import InformatiiFirma from "./components/InformatiiFirma.jsx";
 import GestionareOrareRute from "./components/GestionareOrareRute.jsx";
+import GestionareAutobuze from "./components/GestionareAutobuze.jsx";
 
 function App() {
   const [rolUser, setRolUser] = useState('pasager');
@@ -34,7 +35,7 @@ function App() {
             <Route path="/orare" element={<OrarRute/>}/>
             <Route path="/feedback" element={<Feedback/>}/>
             <Route path="/gestionare-orare" element={<GestionareOrareRute/>}/>
-            {/*<Route path="/gestionare-autobuze" element={<GestionareAutobuze />} />*/}
+            <Route path="/gestionare-autobuze" element={<GestionareAutobuze />} />
             {/*<Route path="/rapoarte" element={<Rapoarte />} />*/}
           </Routes></div>
       </BrowserRouter>

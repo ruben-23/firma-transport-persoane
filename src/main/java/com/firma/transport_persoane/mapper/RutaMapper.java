@@ -4,7 +4,6 @@ import com.firma.transport_persoane.dto.RutaDTO;
 import com.firma.transport_persoane.entity.Localitate;
 import com.firma.transport_persoane.entity.Ruta;
 import com.firma.transport_persoane.service.LocalitateService;
-import com.firma.transport_persoane.service.RutaService;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -43,8 +42,14 @@ public class RutaMapper {
         if (rutaDTO == null) {
             return null;
         }
+
+        Localitate localitateInceput = localitateService.getLocalitateById(rutaDTO.getIdLocalitateInceput());
+        Localitate localitateDestinatie = localitateService.getLocalitateById(rutaDTO.getIdLocalitateDestinatie());
+
         Ruta ruta = new Ruta();
         ruta.setIdRuta(rutaDTO.getIdRuta());
+        ruta.setLocalitateInceput(localitateInceput);
+        ruta.setLocalitateDestinatie(localitateDestinatie);
         return ruta;
     }
 

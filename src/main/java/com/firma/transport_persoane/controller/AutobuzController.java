@@ -37,6 +37,7 @@ public class AutobuzController {
 
     @PostMapping
     public ResponseEntity<AutobuzDTO> adaugaAutobuz(@RequestBody AutobuzDTO autobuzDTO) {
+        autobuzDTO.setIdFirma(1);
         Autobuz autobuz = autobuzService.adaugaAutobuz(autobuzDTO);
         return ResponseEntity.ok(autobuzMapper.toDTO(autobuz));
     }

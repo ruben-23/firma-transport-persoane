@@ -1,8 +1,10 @@
 package com.firma.transport_persoane.controller;
 
+import com.firma.transport_persoane.dto.LocalitatePretRutaDTO;
 import com.firma.transport_persoane.dto.RutaDTO;
 import com.firma.transport_persoane.entity.Ruta;
 import com.firma.transport_persoane.mapper.RutaMapper;
+import com.firma.transport_persoane.service.LocalitateService;
 import com.firma.transport_persoane.service.RutaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +18,13 @@ public class RutaController {
 
     private final RutaService rutaService;
     private final RutaMapper rutaMapper;
+    private final LocalitateService localitateService;
 
     @Autowired
-    public RutaController(RutaService rutaService, RutaMapper rutaMapper) {
+    public RutaController(RutaService rutaService, RutaMapper rutaMapper, LocalitateService localitateService) {
         this.rutaService = rutaService;
         this.rutaMapper = rutaMapper;
+        this.localitateService = localitateService;
     }
 
     @GetMapping
@@ -33,6 +37,11 @@ public class RutaController {
     public ResponseEntity<RutaDTO> getRutaById(@PathVariable Integer id) {
         Ruta ruta = rutaService.getRutaById(id);
         return ResponseEntity.ok(rutaMapper.toDTO(ruta));
+    }
+
+    @GetMapping("/{idRuta}/localitati/preturi")
+    public ResponseEntity<List<LocalitatePretRutaDTO>> getLocalitatiSiPreturiRuta(@PathVariable Integer idRuta) {
+        return ResponseEntity.ok(localitateService.getLocalitatiSiPreturiRuta(idRuta));
     }
 
     @PostMapping

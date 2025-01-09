@@ -1,6 +1,7 @@
 package com.firma.transport_persoane.service.implementare;
 
 import com.firma.transport_persoane.dto.LocalitateDTO;
+import com.firma.transport_persoane.dto.LocalitatePretRutaDTO;
 import com.firma.transport_persoane.entity.Localitate;
 import com.firma.transport_persoane.mapper.LocalitateMapper;
 import com.firma.transport_persoane.repository.LocalitateRepository;
@@ -53,5 +54,11 @@ public class LocalitateServiceImpl implements LocalitateService {
     public void stergeLocalitate(Integer id) {
         localitateRepository.delete(getLocalitateById(id));
     }
+
+    @Override
+    public List<LocalitatePretRutaDTO> getLocalitatiSiPreturiRuta(Integer idRuta){
+        return localitateRepository.findLocalitatiSiPretPentruRuta(idRuta);
+    }
+
 
 }

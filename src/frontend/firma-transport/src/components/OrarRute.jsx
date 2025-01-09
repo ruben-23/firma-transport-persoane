@@ -74,7 +74,6 @@ const OrarRute = () => {
         });
 
     setOrareRuteFiltrate(orareRuteFiltrate);
-
   };
 
   const formatareOra = (ora) => {
@@ -152,7 +151,6 @@ const OrarRute = () => {
                 lineHeight: '100px', }}
         >Error: {error.message}</div>}
 
-        {/* Tabel cu orarul rutelor filtrate dupa localitatea de plecare si ziua saptamanii */}
         <h2 className="mt-5">Listă Rute</h2>
         <Table striped bordered hover className="mt-3 custom-table">
           <thead>
